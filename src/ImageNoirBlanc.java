@@ -3,24 +3,30 @@
  * @author Anthony Carmichael, Maxime Malette, Richard Dongmo
  * @version 1.0
  *
- * cette classe implemente une image en noir et blanc
+ * cette classe implémente une image en noir et blanc
  */
 
 public class ImageNoirBlanc extends Image{
 
-    //Retourne la couleur prépondérante
+    /*Cette méthode retourne la couleur prépondérante*/
     public Pixel couleur_preponderante(){
         Pixel preponderant = new Pixel();
 
         return preponderant;
     }
 
-    //Modifie la valeur du pixel
+    /**
+     *
+     * @param valeur la valeur passer en paramétre doit être possitve ou
+     * négative. Si la valeur est positive, l’image devient plus noire,
+     * si la valeur est négative, l’image devient plus claire
+     *
+     */
     public void eclaircir_noicir(int valeur){
 
     }
 
-    //Réduit le pixel
+    /*Cette méthode réduit le pixel*/
     public void reduire(){
 
     }

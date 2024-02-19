@@ -13,6 +13,20 @@ public class Image {
     protected String _chemin;
     protected Pixel[][] _matrice;
 
+
+    /**
+     * Constructeur sans paramètre :
+     */
+    Image() {
+        Pixel[][] matrice = {};
+        this.set_type("");
+        this.set_largeur((short)0);
+        this.set_hauteur((short)0);
+        this.set_maxValue(0);
+        this.set_chemin("");
+        this.set_matrice(matrice);
+    }
+
     /**
      * Constructeur:
      * @param type : Correspond au type du fichier en String : P2 ou P5 pour pgm et P3 ou P6 pour PPM
@@ -31,7 +45,7 @@ public class Image {
         this.set_matrice(matrice);
     }
 
-    // Getteur/Setteur **************************************************************//
+    /** Getter and Setter **************************************************************/
     public String get_type() {
         return _type;
     }
@@ -79,22 +93,50 @@ public class Image {
     public void set_matrice(Pixel[][] matrice) {
         this._matrice = matrice;
     }
-    //*************************************************************************//
+    /*************************************************************************/
 
-    public void lire(String f) {
+    /**
+     * Lecture d'un fichier pour peupler la matrice de l'image implicite
+     */
+    public void lire() {
     }
 
+    /**
+     * Écriture dans un fichier pour exporter notre image dans un fichier
+     */
     public void ecrire() {
     }
 
+    /**
+     * Copier une image explicite
+     * @param i : Correspond a l'image explicite qui sera copier dans l'image implicite
+     */
     public void copier(Image i) {
     }
 
-    public void extraire(short l1, short col1, short l2, short col2 ) {
+    /**
+     * Permet d'extraire une partie d'image pour en former une nouvelle image
+     * @param l1 : Concerne la ligne dans la matrice du pixel coin haut/gauche de la partie a extraire
+     * @param col1 : Concerne la colone dans la matrice du pixel coin haut/gauche de la partie a extraire
+     * @param l2 : Concerne la ligne dans la matrice du pixel coin bas/droite de la partie a extraire
+     * @param col2 : Concerne la colone dans la matrice du pixel coin bas/droite de la partie a extraire
+     */
+    public Image extraire(short l1, short col1, short l2, short col2 ) {
+        Image newImage = new Image();
+        return newImage;
     }
 
-    public void sont_identique(Image i) {
+    /**
+     * Verification si l'image implicite et explicite sont identique
+     * @param i : Correspond a l'image explicite qui sera comparée
+     */
+    public boolean sont_identique(Image i) {
+        return true;
     }
+
+    /**
+     * Permet la rotation de l'image en changeant l'indexation des pixels
+     */
     public void pivoter90() {
     }
 

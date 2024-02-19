@@ -45,55 +45,66 @@ public class Image {
         this.set_matrice(matrice);
     }
 
-    /** Getter and Setter **************************************************************/
+    /** Getteur du type d'image **/
     public String get_type() {
         return _type;
     }
 
+    /** Setteur du type d'image **/
     public void set_type(String _type) {
         this._type = _type;
     }
 
+    /** Getteur largeur de l'image **/
     public short get_largeur() {
         return _largeur;
     }
 
+    /** Setteur de la largeur de l'image **/
     public void set_largeur(short _largeur) {
         this._largeur = _largeur;
     }
 
+    /** Getteur hauteur de l'image **/
     public short get_hauteur() {
         return _hauteur;
     }
 
+    /** Setteur de la hauteur de l'image **/
     public void set_hauteur(short _hauteur) {
         this._hauteur = _hauteur;
     }
 
+    /** Getteur de la valeur maximal du gradiant de valeur **/
     public int get_maxValue() {
         return _maxValue;
     }
 
+    /** Setteur de la valeur maximal du gradiant de valeur **/
     public void set_maxValue(int _maxValue) {
         this._maxValue = _maxValue;
     }
 
+    /** Getteur du chemin de l'image **/
     public String get_chemin() {
         return _chemin;
     }
 
+    /** Setteur du chemin de l'image **/
     public void set_chemin(String _chemin) {
         this._chemin = _chemin;
     }
 
+    /** Getteur de la matrice de pixel **/
     public Pixel[][] getMatrice() {
         return _matrice;
     }
 
+    /** Setteur de la matrice de pixel **/
     public void set_matrice(Pixel[][] matrice) {
         this._matrice = matrice;
     }
-    /*************************************************************************/
+
 
     /**
      * Lecture d'un fichier pour peupler la matrice de l'image implicite

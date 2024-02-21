@@ -149,6 +149,19 @@ public class Image {
      * Permet la rotation de l'image en changeant l'indexation des pixels
      */
     public void pivoter90() {
+        Pixel[][] newMat = new Pixel[_hauteur][_largeur];
+
+        for (int i = 0; i < _largeur; i++) {
+            for (int j = 0; j < _hauteur; j++) {
+                newMat[j][_largeur - i - 1] = _matrice[i][j];
+            }
+        }
+
+        _matrice = newMat;
+        short temp =_largeur;
+        _largeur = _hauteur;
+        _hauteur = temp;
     }
+
 
 }

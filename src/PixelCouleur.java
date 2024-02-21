@@ -79,14 +79,17 @@ public class PixelCouleur extends Pixel{
     /**
      * Permet de vérifier si deux pixels sont identiques
      */
-    public boolean sont_identiques(Pixel p){
-        return true;
+    public boolean sont_identiques(PixelCouleur p){
+        if (_red == p.get_red() && _blue == p.get_blue() && _green == p.get_green()){
+            return true;
+        }
+        return false;
     }
 
     /**
      * Permet d'écrire la valeur d'un pixel dans un fichier
      */
-    public Pixel ecrire(){
-        return this;
+    public void ecrire(){
+        System.out.println(_red + " " + _green + " " + _blue);
     }
 }

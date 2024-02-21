@@ -43,14 +43,17 @@ public class PixelNoirBlanc extends Pixel {
     /**
      * Permet de vérifier si deux pixels sont identiques
      */
-    public boolean sont_identiques(Pixel p){
-        return true;
+    public boolean sont_identiques(PixelNoirBlanc p){
+        if (_nuance == p.get_nuance()){
+            return true;
+        }
+        return false;
     }
 
     /**
      * Permet d'écrire la valeur d'un pixel dans un fichier
      */
-    public Pixel ecrire(){
-        return this;
+    public void ecrire(){
+        System.out.println(_nuance);
     }
 }

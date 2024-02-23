@@ -36,7 +36,7 @@ public class PixelNoirBlanc extends Pixel {
     /**
      * Permet de noircir ou d'éclaircir le pixel
      */
-    public void eclaircir_noircir(int v){
+    public void eclaircir_noircir(int v, int maxVal){
         _nuance = _nuance + v;
     }
 

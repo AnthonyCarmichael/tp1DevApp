@@ -8,6 +8,12 @@
 
 public class ImageCouleur extends Image{
 
+    /*private PixelCouleur[][] matriceColeur;
+
+
+    public ImageCouleur(){
+
+    }*/
     /*Cette méthode retourne la couleur prépondérante*/
     public Pixel couleur_preponderante(){
         Pixel preponderant = new Pixel();
@@ -23,7 +29,11 @@ public class ImageCouleur extends Image{
      *
      */
     public void eclaircir_noicir(int valeur){
-
+        for (short i = 0; i < getMatrice().length; i++){
+            for (short j = 0; j < getMatrice()[i].length; j++){
+                ((PixelCouleur)getMatrice()[i][j]).eclaircir_noircir(valeur, get_maxValue());
+            }
+        }
     }
 
     /*Cette méthode réduit le pixel*/

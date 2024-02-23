@@ -110,6 +110,9 @@ public class PixelCouleur extends Pixel{
         System.out.println(_red + " " + _green + " " + _blue);
     }
 
+    /**
+     * Permet de renvoyer le nouveau pixel que nous allons vouloir lors de la réduction d'une image
+     */
     public Pixel reduire(PixelCouleur p1, PixelCouleur p2, PixelCouleur p3){
         int newRed = (_red + p1.get_red() + p2.get_red() + p3.get_red())/4;
         int newGreen = (_green + p1.get_green() + p2.get_green() + p3.get_green())/4;

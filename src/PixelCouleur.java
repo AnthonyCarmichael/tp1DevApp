@@ -72,7 +72,7 @@ public class PixelCouleur extends Pixel{
     /**
      * Permet de noircir ou d'éclaircir le pixel
      */
-    public void eclaircir_noircir(int v){
+    public void eclaircir_noircir(int v, int maxVal){
         _red = _red + v;
         _green = _green + v;
         _blue = _blue + v;

@@ -33,5 +33,4 @@ i.set_hauteur(4);
         // Print the rotated matrix
         i.displayMatrix();
     }
-}
-*/
+}*/

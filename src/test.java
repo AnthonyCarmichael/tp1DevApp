@@ -5,13 +5,10 @@ public class test {
 
         Image image = new Image();
         image = traducteur.lire("image/Sherbrooke_Frontenac_nuit.pgm");
-
-        if (image instanceof ImageCouleur)
-        {
-            System.out.print("Couleur");
-            ((ImageCouleur) image).eclaircir_noicir(1);
+        System.out.println(image);
+        if (image instanceof ImageNoirBlanc){
+            ((ImageNoirBlanc) image).eclaircir_noicir(-98);
         }
 
-        System.out.println(image);
     }
 }

@@ -3,8 +3,11 @@ public class test {
 
          Traducteur traducteur = new Traducteur();
 
-        Image image = new Image();
+        Image image;
+        Image image2;
         image = traducteur.lire("image/Sherbrooke_Frontenac_nuit.pgm");
+        image2 = traducteur.lire("image/Sherbrooke_Frontenac_nuit.pgm");
+
 
         if (image instanceof ImageCouleur)
         {
@@ -13,5 +16,6 @@ public class test {
         }
 
         System.out.println(image);
+        System.out.println(image.sont_identique(image2));
     }
 }

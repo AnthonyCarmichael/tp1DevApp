@@ -1,4 +1,4 @@
-public class Main {
+/*public class Main {
     public static void main(String[] args){
         Image i = new Image();
         int[][] mat = {
@@ -34,3 +34,4 @@ i.set_hauteur(4);
         i.displayMatrix();
     }
 }
+*/

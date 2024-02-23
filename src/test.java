@@ -16,6 +16,10 @@ public class test {
         }
 
         System.out.println(image);
+        if (image instanceof ImageNoirBlanc){
+            ((ImageNoirBlanc) image).eclaircir_noicir(-98);
+        }
+
         System.out.println(image.sont_identique(image2));
     }
 }

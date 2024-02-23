@@ -73,9 +73,24 @@ public class PixelCouleur extends Pixel{
      * Permet de noircir ou d'éclaircir le pixel
      */
     public void eclaircir_noircir(int v, int maxVal){
-        _red = _red + v;
-        _green = _green + v;
-        _blue = _blue + v;
+        if (_red + v >= maxVal){
+            _red = maxVal;
+        }
+        else{
+            _red = _red + v;
+        }
+        if (_green + v>=maxVal){
+            _green = maxVal;
+        }
+        else{
+            _green = _green + v;
+        }
+        if (_blue + v>=maxVal){
+            _blue = maxVal;
+        }
+        else{
+            _blue = _blue + v;
+        }
     }
 
     /**
@@ -93,5 +108,13 @@ public class PixelCouleur extends Pixel{
      */
     public void ecrire(){
         System.out.println(_red + " " + _green + " " + _blue);
+    }
+
+    public Pixel reduire(PixelCouleur p1, PixelCouleur p2, PixelCouleur p3){
+        int newRed = (_red + p1.get_red() + p2.get_red() + p3.get_red())/4;
+        int newGreen = (_green + p1.get_green() + p2.get_green() + p3.get_green())/4;
+        int newBlue = (_blue + p1.get_blue() + p2.get_blue() + p3.get_blue())/4;
+        PixelCouleur newPixel = new PixelCouleur(newRed, newGreen, newBlue);
+        return newPixel;
     }
 }

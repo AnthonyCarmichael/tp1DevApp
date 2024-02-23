@@ -37,7 +37,12 @@ public class PixelNoirBlanc extends Pixel {
      * Permet de noircir ou d'éclaircir le pixel
      */
     public void eclaircir_noircir(int v, int maxVal){
-        _nuance = _nuance + v;
+        if (_nuance + v >= maxVal){
+            _nuance = maxVal;
+        }
+        else{
+            _nuance = _nuance + v;
+        }
     }
 
     /**
@@ -55,5 +60,11 @@ public class PixelNoirBlanc extends Pixel {
      */
     public void ecrire(){
         System.out.println(_nuance);
+    }
+
+    public Pixel reduire(PixelNoirBlanc p1, PixelNoirBlanc p2, PixelNoirBlanc p3){
+       int newNuance = (_nuance + p1.get_nuance() + p2.get_nuance() + p3.get_nuance())/4;
+       PixelNoirBlanc newPixel = new PixelNoirBlanc(newNuance);
+       return newPixel;
     }
 }

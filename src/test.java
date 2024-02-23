@@ -3,12 +3,14 @@ public class test {
 
          Traducteur traducteur = new Traducteur();
 
-        Image image = new Image();
+        Image image;
         image = traducteur.lire("image/Sherbrooke_Frontenac_nuit.pgm");
         System.out.println(image);
         if (image instanceof ImageNoirBlanc){
-            ((ImageNoirBlanc) image).eclaircir_noicir(-98);
+            //((ImageCouleur) image).eclaircir_noicir(-98);
+            ((ImageNoirBlanc) image).couleur_preponderante();
         }
+
 
     }
 }

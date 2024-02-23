@@ -1,10 +1,11 @@
 public class test {
     public static void main(String[] args){
 
-        Image testImage = new Image();
+         Traducteur traducteur = new Traducteur();
 
-        testImage.lire("image/Sherbrooke_Frontenac_nuit.pgm");
-        System.out.println(testImage);
+        Image image = new Image();
+        image = traducteur.lire("image/Sherbrooke_Frontenac_nuit.ppm");
+        System.out.println(image);
 
 
     }

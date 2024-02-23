@@ -9,9 +9,11 @@ public class PixelCouleur extends Pixel{
     /**
      * Attribut privé de la classe
      */
-    private int _blue;
-    private int _green;
     private int _red;
+    private int _green;
+    private int _blue;
+
+
 
     /**
      * Constructeur sans paramètres de la classe

@@ -4,7 +4,7 @@ public class test {
          Traducteur traducteur = new Traducteur();
 
         Image image = new Image();
-        image = traducteur.lire("image/Sherbrooke_Frontenac_nuit.ppm");
+        image = traducteur.lire("image/Sherbrooke_Frontenac_nuit.pgm");
 
         if (image instanceof ImageCouleur)
         {

@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  *
  * @author Anthony Carmichael, Maxime Malette, Richard Dongmo
@@ -29,5 +31,43 @@ public class ImageCouleur extends Image{
     /*Cette méthode réduit le pixel*/
     public void reduire(){
 
+    }
+
+    public void lire(Scanner scannerLecture, String path){
+        this.set_chemin(path);
+        this.set_type(scannerLecture.next());
+        this.set_largeur(scannerLecture.nextShort());
+        this.set_hauteur(scannerLecture.nextShort());
+        this.set_maxValue(scannerLecture.nextInt());
+
+        if (this.get_type().equalsIgnoreCase("p3") || this.get_type().equalsIgnoreCase("p6"))
+        {
+            PixelCouleur[][] tabPixel = new PixelCouleur[this.get_hauteur()][this.get_largeur()];
+            int x = 0;
+            int y = 0;
+            while (scannerLecture.hasNextInt()) {
+
+                int r = scannerLecture.nextInt();
+                int g = scannerLecture.nextInt();
+                int b = scannerLecture.nextInt();
+
+                PixelCouleur pixTemp = new PixelCouleur(r,g,b);
+                System.out.println(x+","+y);
+                tabPixel[y][x] = pixTemp;
+                x++;
+                if (x == this.get_largeur())
+                {
+                    x=0;
+                    y++;
+                }
+            }
+            this.set_matrice(tabPixel);
+
+            //System.out.println(Arrays.toString(tabPixel));
+            scannerLecture.close();
+        }
+        else {
+            System.out.println("ERREUR: Le fichier "+path+" ne correspond pas au bon type : "+this.get_type());
+        }
     }
 }

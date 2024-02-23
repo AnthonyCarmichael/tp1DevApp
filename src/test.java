@@ -6,7 +6,5 @@ public class test {
         Image image = new Image();
         image = traducteur.lire("image/Sherbrooke_Frontenac_nuit.ppm");
         System.out.println(image);
-
-
     }
 }

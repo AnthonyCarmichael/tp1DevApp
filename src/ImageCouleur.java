@@ -74,4 +74,15 @@ public class ImageCouleur extends Image{
             System.out.println("ERREUR: Le fichier "+path+" ne correspond pas au bon type : "+this.get_type());
         }
     }
+
+    public boolean matrice_identique(Image image) {
+        for (int i = 0; i < get_hauteur(); i++){
+            for (int j = 0 ; j < get_largeur(); j++) {
+                if (!((PixelCouleur)this.getMatrice()[i][j]).sont_identiques(((PixelCouleur)(image.getMatrice())[i][j]))) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }

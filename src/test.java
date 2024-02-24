@@ -6,20 +6,8 @@ public class test {
         Image image;
         Image image2;
         image = traducteur.lire("image/Sherbrooke_Frontenac_nuit.pgm");
-        image2 = traducteur.lire("image/Sherbrooke_Frontenac_nuit.pgm");
+        image2 = traducteur.lire("image/testNoirBlancNonModif.pgm");
 
-
-        if (image instanceof ImageCouleur)
-        {
-            System.out.print("Couleur");
-            ((ImageCouleur) image).eclaircir_noicir(1);
-        }
-
-        System.out.println(image);
-        if (image instanceof ImageNoirBlanc){
-            ((ImageNoirBlanc) image).eclaircir_noicir(-98);
-        }
-
-        System.out.println(image.sont_identique(image2));
+        System.out.println((image).sont_identique(image2));
     }
 }

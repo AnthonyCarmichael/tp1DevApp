@@ -157,30 +157,26 @@ public class Image {
             return false;
         } else if (this.get_maxValue() != image.get_maxValue()) {
             return false;
-        } else if (!this.get_chemin().equals(image.get_chemin())) {
+        } /*else if (!this.get_chemin().equals(image.get_chemin())) {
             return false;
         }
+        Peut-être la même image sans forcément avoir le même chemin */
 
         String[] cheminExtension = get_chemin().split("\\.");
         System.out.println(cheminExtension[1]);
 
         if(cheminExtension[1].equals("pgm")) // Si l'image est noir et blanc
         {
-            for (int i = 0; i <= get_hauteur(); i++){
-                for (int j = 0 ; j <= get_largeur(); i++) {
-                    if (((PixelNoirBlanc)this.getMatrice()[i][j]).sont_identiques(((PixelNoirBlanc)(image.getMatrice())[i][j]))) {
+            return ((ImageNoirBlanc)this).matrice_identique(image);
 
-                    }
-                }
-
-            }
         } else if (cheminExtension[1].equals("ppm")) { // Si l'image est en couleur
 
+            return ((ImageCouleur)this).matrice_identique(image);
         }
-
-
-
-        return true;
+        else {
+            System.out.print("Erreur");
+            return false;
+        }
     }
 
     /**

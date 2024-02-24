@@ -76,17 +76,26 @@ public class PixelCouleur extends Pixel{
         if (_red + v >= maxVal){
             _red = maxVal;
         }
+        else if (_red + v <= 0) {
+            _red = 0;
+        }
         else{
             _red = _red + v;
         }
         if (_green + v>=maxVal){
             _green = maxVal;
         }
+        else if (_green + v <= 0) {
+            _green = 0;
+        }
         else{
             _green = _green + v;
         }
         if (_blue + v>=maxVal){
             _blue = maxVal;
+        }
+        else if (_blue + v <= 0) {
+            _blue = 0;
         }
         else{
             _blue = _blue + v;

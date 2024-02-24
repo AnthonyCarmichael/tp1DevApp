@@ -40,6 +40,9 @@ public class PixelNoirBlanc extends Pixel {
         if (_nuance + v >= maxVal){
             _nuance = maxVal;
         }
+        else if (_nuance + v <= 0) {
+            _nuance = 0;
+        }
         else{
             _nuance = _nuance + v;
         }

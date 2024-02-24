@@ -14,8 +14,38 @@ import java.util.Scanner;
 public class ImageNoirBlanc extends Image{
 
     /*Cette méthode retourne la couleur prépondérante*/
-    public Pixel couleur_preponderante(){
-        Pixel preponderant = new Pixel();
+    public PixelNoirBlanc couleur_preponderante(){
+        PixelNoirBlanc[] tabPixel = new PixelNoirBlanc[get_hauteur() * get_largeur()];
+
+        /*Remplissage du tableau de pixel avec les donn/es de la matrice de pixel*/
+        int k = 0;
+
+        for (int i = 0; i < getMatrice().length; i++){
+            for (int j = 0; j < getMatrice()[i].length; j++){
+                tabPixel[k] = (PixelNoirBlanc) getMatrice()[i][j];
+                k++;
+            }
+        }
+
+        int taille = tabPixel.length;
+        int max_count = 0;
+        PixelNoirBlanc preponderant = new PixelNoirBlanc();
+
+        for (int i = 0; i < taille; i++){
+            int count = 0;
+            for (int j = 0; j < taille; j++){
+                if (tabPixel[i].sont_identiques(tabPixel[j])){
+                    count++;
+                }
+            }
+
+            if (count > max_count){
+                max_count = count;
+                preponderant = tabPixel[i];
+            }
+        }
+
+        System.out.print("Pixel préponderant: " + preponderant.get_nuance() + " " + max_count);
 
         return preponderant;
     }

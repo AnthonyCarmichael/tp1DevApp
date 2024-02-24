@@ -14,8 +14,38 @@ import java.util.Scanner;
 public class ImageCouleur extends Image{
 
     /*Cette méthode retourne la couleur prépondérante*/
-    public Pixel couleur_preponderante(){
-        Pixel preponderant = new Pixel();
+    public PixelCouleur couleur_preponderante(){
+        PixelCouleur[] tabPixel = new PixelCouleur[get_hauteur() * get_largeur()];
+
+        /*Remplissage du tableau de pixel avec les donn/es de la matrice de pixel*/
+        int k = 0;
+
+        for (int i = 0; i < getMatrice().length; i++){
+            for (int j = 0; j < getMatrice()[i].length; j++){
+                tabPixel[k] = (PixelCouleur) getMatrice()[i][j];
+                k++;
+            }
+        }
+
+        int taille = tabPixel.length;
+        int max_count = 0;
+        PixelCouleur preponderant = new PixelCouleur();
+
+        for (int i = 0; i < taille; i++){
+            int count = 0;
+            for (int j = 0; j < taille; j++){
+                if (tabPixel[i].sont_identiques(tabPixel[j])){
+                    count++;
+                }
+            }
+
+            if (count > max_count){
+                max_count = count;
+                preponderant = tabPixel[i];
+            }
+        }
+
+        System.out.print("Pixel préponderant: " + preponderant.get_red() + " " + preponderant.get_green() + " " + preponderant.get_blue() + " " + max_count);
 
         return preponderant;
     }

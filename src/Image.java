@@ -5,10 +5,9 @@
  * Cette classe implémente une image.
  */
 
-import java.io.File;  // Import the File class
-import java.io.FileNotFoundException;  // Import this class to handle errors
-import java.text.DecimalFormat;
+import java.io.*;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner; // Import the Scanner class to read text files
 
 
@@ -30,13 +29,12 @@ public class Image {
         this.set_largeur((short)0);
         this.set_hauteur((short)0);
         this.set_maxValue(0);
-        this.set_chemin("");
+        _chemin="";
         this.set_matrice(matrice);
     }
 
     @Override
     public String toString(){
-        DecimalFormat df = new DecimalFormat("#.00$");
         return "Type: " +_type +" | Chemin: " + _chemin + " | Hauteur: " + _hauteur + " | Largeur: " + _largeur + " | MaxVal: " + get_maxValue();
     }
 
@@ -104,8 +102,28 @@ public class Image {
     }
 
     /** Setteur du chemin de l'image **/
-    public void set_chemin(String _chemin) {
-        this._chemin = _chemin;
+    public void set_chemin(String chemin) {
+        String[] cheminExtensionParam = chemin.split("\\.");
+        if ((cheminExtensionParam[1].equalsIgnoreCase("pgm") ||cheminExtensionParam[1].equalsIgnoreCase("ppm")))
+        {
+            if (Objects.equals(get_chemin(), ""))
+            {
+                _chemin=chemin;
+            }
+            else
+            {
+                String[] cheminExtension = get_chemin().split("\\.");
+                if (cheminExtension[1].equals(cheminExtensionParam[1])){
+                    this._chemin = chemin;
+                }
+                else {
+                    System.out.print("Impossible de modifier l'extension du fichier : "+ cheminExtension[1]);
+                }
+            }
+        }
+        else {
+            System.out.print("Type de fichier incompatible : "+ cheminExtensionParam[1]);
+        }
     }
 
     /** Getteur de la matrice de pixel **/
@@ -122,6 +140,23 @@ public class Image {
      * Écriture dans un fichier pour exporter notre image dans un fichier
      */
     public void ecrire() {
+        try {
+            short cpt =0;
+            BufferedWriter writer = new BufferedWriter(new FileWriter(get_chemin()));
+            writer.write(get_type()+"\n"+get_largeur()+" "+get_hauteur()+"\n"+get_maxValue()+"\n");
+
+            String[] cheminExtension = get_chemin().split("\\.");
+            if (cheminExtension[1].equals("pgm") && this instanceof ImageNoirBlanc) {
+                ((ImageNoirBlanc)this).ecrire(writer);
+            }
+            else if (cheminExtension[1].equals("ppm") && this instanceof ImageCouleur)
+            {
+                ((ImageCouleur)this).ecrire(writer);
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -163,13 +198,12 @@ public class Image {
         Peut-être la même image sans forcément avoir le même chemin */
 
         String[] cheminExtension = get_chemin().split("\\.");
-        System.out.println(cheminExtension[1]);
 
-        if(cheminExtension[1].equals("pgm")) // Si l'image est noir et blanc
+        if(cheminExtension[1].equals("pgm") && this instanceof ImageNoirBlanc) // Si l'image est noir et blanc
         {
             return ((ImageNoirBlanc)this).matrice_identique(image);
 
-        } else if (cheminExtension[1].equals("ppm")) { // Si l'image est en couleur
+        } else if (cheminExtension[1].equals("ppm") && this instanceof ImageCouleur) { // Si l'image est en couleur
 
             return ((ImageCouleur)this).matrice_identique(image);
         }

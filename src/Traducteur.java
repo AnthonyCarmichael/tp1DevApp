@@ -10,21 +10,23 @@ public class Traducteur {
             Scanner scannerLecture = new Scanner(fichier);
 
             String[] cheminExtension = path.split("\\.");
-            System.out.println(cheminExtension[1]);
 
             if(cheminExtension[1].equals("pgm")) // Si l'image est noir et blanc
             {
                 ImageNoirBlanc image = new ImageNoirBlanc();
                 image.lire(scannerLecture,path);
+                scannerLecture.close();
                 return image;
 
             } else if (cheminExtension[1].equals("ppm")) { // Si l'image est en couleur
                 ImageCouleur image = new ImageCouleur();
                 image.lire(scannerLecture,path);
+                scannerLecture.close();
                 return image;
             }
             else {
                 System.out.println(path+" ERREUR: Ce fichier n'est pas conforme");
+                scannerLecture.close();
                 return null;
             }
         } catch (FileNotFoundException e) {

@@ -1,3 +1,6 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -56,7 +59,6 @@ public class ImageCouleur extends Image{
                 int b = scannerLecture.nextInt();
 
                 PixelCouleur pixTemp = new PixelCouleur(r,g,b);
-                System.out.println(x+","+y);
                 tabPixel[y][x] = pixTemp;
                 x++;
                 if (x == this.get_largeur())
@@ -84,5 +86,19 @@ public class ImageCouleur extends Image{
             }
         }
         return true;
+    }
+
+    public void ecrire(BufferedWriter writer) throws IOException {
+        short cpt = 0;
+        for (int i = 0; i < get_hauteur(); i++) {
+            for (int j = 0; j < get_largeur(); j++) {
+                writer.write(((PixelCouleur) getMatrice()[i][j]).get_red() + " "+((PixelCouleur) getMatrice()[i][j]).get_green() + " " +((PixelCouleur) getMatrice()[i][j]).get_blue()+ " ");
+                cpt++;
+                if (cpt == 7) {
+                    writer.write("\n");
+                    cpt = 0;
+                }
+            }
+        }
     }
 }

@@ -1,3 +1,6 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -57,7 +60,6 @@ public class ImageNoirBlanc extends Image{
         this.set_hauteur(scannerLecture.nextShort());
         this.set_maxValue(scannerLecture.nextInt());
 
-        System.out.println(this);
         if (this.get_type().equalsIgnoreCase("p2") || this.get_type().equalsIgnoreCase("p5"))
         {
             PixelNoirBlanc[][] tabPixel = new PixelNoirBlanc[this.get_hauteur()][this.get_largeur()];
@@ -66,7 +68,6 @@ public class ImageNoirBlanc extends Image{
             while (scannerLecture.hasNextInt()) {
 
                 PixelNoirBlanc pixTemp = new PixelNoirBlanc(scannerLecture.nextInt());
-                System.out.println(x+","+y);
                 tabPixel[y][x] = pixTemp;
                 x++;
                 if (x == this.get_largeur())
@@ -96,5 +97,19 @@ public class ImageNoirBlanc extends Image{
             }
         }
         return true;
+    }
+
+    public void ecrire(BufferedWriter writer) throws IOException {
+        short cpt =0;
+        for (int i = 0; i < get_hauteur(); i++) {
+            for (int j = 0; j < get_largeur(); j++) {
+                writer.write(((PixelNoirBlanc) getMatrice()[i][j]).get_nuance() + " ");
+                cpt++;
+                if (cpt == 21) {
+                    writer.write("\n");
+                    cpt = 0;
+                }
+            }
+        }
     }
 }

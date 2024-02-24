@@ -129,6 +129,7 @@ public class Image {
      * @param i : Correspond a l'image explicite qui sera copier dans l'image implicite
      */
     public void copier(Image i) {
+
     }
 
     /**
@@ -145,10 +146,37 @@ public class Image {
 
     /**
      * Verification si l'image implicite et explicite sont identique
-     * @param i : Correspond a l'image explicite qui sera comparée
+     * @param image : Correspond a l'image explicite qui sera comparée
      */
-    public boolean sont_identique(Image i) {
-        return true;
+    public boolean sont_identique(Image image) {
+        if (!this.get_type().equals(image.get_type()))
+            return false;
+        else if (this.get_largeur() != image.get_largeur()) {
+            return false;
+        } else if (this.get_hauteur() != image.get_hauteur()) {
+            return false;
+        } else if (this.get_maxValue() != image.get_maxValue()) {
+            return false;
+        } /*else if (!this.get_chemin().equals(image.get_chemin())) {
+            return false;
+        }
+        Peut-être la même image sans forcément avoir le même chemin */
+
+        String[] cheminExtension = get_chemin().split("\\.");
+        System.out.println(cheminExtension[1]);
+
+        if(cheminExtension[1].equals("pgm")) // Si l'image est noir et blanc
+        {
+            return ((ImageNoirBlanc)this).matrice_identique(image);
+
+        } else if (cheminExtension[1].equals("ppm")) { // Si l'image est en couleur
+
+            return ((ImageCouleur)this).matrice_identique(image);
+        }
+        else {
+            System.out.print("Erreur");
+            return false;
+        }
     }
 
     /**

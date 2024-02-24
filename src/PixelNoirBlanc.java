@@ -68,7 +68,7 @@ public class PixelNoirBlanc extends Pixel {
     /**
      * Permet de renvoyer le nouveau pixel que nous allons vouloir lors de la réduction d'une image
      */
-    public Pixel reduire(PixelNoirBlanc p1, PixelNoirBlanc p2, PixelNoirBlanc p3){
+    public PixelNoirBlanc reduire(PixelNoirBlanc p1, PixelNoirBlanc p2, PixelNoirBlanc p3){
        int newNuance = (_nuance + p1.get_nuance() + p2.get_nuance() + p3.get_nuance())/4;
        PixelNoirBlanc newPixel = new PixelNoirBlanc(newNuance);
        return newPixel;

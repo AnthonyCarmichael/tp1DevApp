@@ -67,20 +67,21 @@ public class ImageNoirBlanc extends Image{
 
     /*Cette méthode réduit le pixel*/
     public void reduire(){
-        short n = 0, m = 0;
-        int moyBlue = 0, moyRed = 0, moyGreen = 0;
+        int hauteur = get_hauteur();
+        int largeur = get_largeur();
 
-        PixelCouleur[][] mat = new PixelCouleur[_hauteur][_largeur];
-        PixelCouleur[][] matR = new PixelCouleur[_hauteur/2][_largeur/2];
+        int newHauteur = hauteur / 4;
+        int newLargeur = largeur / 4;
 
-        for (short i = n; i < n + 2; i++){
-            for (short j = m; j < m + 2; j++){
-                moyBlue = moyBlue + mat[n][m].get_blue();
-                moyRed = moyRed + mat[n][m].get_red();
-                moyGreen = moyGreen + mat[n][m].get_green();
+        PixelNoirBlanc[][] matriceReduite = new PixelNoirBlanc[newHauteur][newLargeur];
+
+        for (int i = 0; i < newHauteur; i++) {
+            for (int j = 0; j < newLargeur; j++) {
+                if (getMatrice()[4*i][4*j] instanceof PixelNoirBlanc){
+                    matriceReduite[i][j] = ((PixelNoirBlanc) getMatrice()[4*i][4*j]).reduire(((PixelNoirBlanc) getMatrice()[4*i+1][4*j]), ((PixelNoirBlanc) getMatrice()[4*i+2][4*j]), ((PixelNoirBlanc) getMatrice()[4*i+3][4*j]));
+                }
             }
         }
-
     }
 
     public void lire(Scanner scannerLecture, String path){

@@ -191,8 +191,25 @@ public class Image {
      * @param col2 : Concerne la colone dans la matrice du pixel coin bas/droite de la partie a extraire
      */
     public Image extraire(short l1, short col1, short l2, short col2 ) {
-        Image newImage = new Image();
-        return newImage;
+
+        if (l1 >= 0 && l1 < l2  && l2 < get_hauteur() && col1 >= 0 && col1 < col2 && col2 < get_largeur())
+        {
+            Image newImage = this;
+            newImage.set_hauteur((short) (l2-l1+1));
+            newImage.set_largeur((short) (col2-col1+1));
+            Pixel[][] newMatrice = new Pixel[newImage.get_hauteur()][newImage.get_largeur()];
+            for (int i = 0; i < newImage.get_hauteur(); i++) {
+                for (int j = 0; j < get_largeur(); j++) {
+                    newMatrice[i][j]=this.getMatrice()[l1+i][col1+j];
+                }
+            }
+            newImage.set_matrice(newMatrice);
+            return newImage;
+        }
+        else {
+            System.out.print("Les paramètre doivent être le point haut gauche et le point bas droite dans la matrice");
+        }
+        return null;
     }
 
     /**

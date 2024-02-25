@@ -29,6 +29,10 @@ public class test {
         System.out.println((imageCouleur).sont_identique(image3)); // Sensé retourner true
 
         imageNoirBlanc.copier(image4);
+        image4.extraire((short)1,(short)13,(short)5,(short)16);
+        image4.set_chemin("image/testExtraire.pgm");
+        //imageCouleur.pivoter90();
+        image4.ecrire();
 
     }
 }

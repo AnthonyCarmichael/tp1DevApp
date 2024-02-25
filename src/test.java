@@ -1,6 +1,7 @@
 public class test {
     public static void main(String[] args){
-
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // TEST ANTHO
         Traducteur traducteur = new Traducteur();
 
         Image imageCouleur;
@@ -25,6 +26,9 @@ public class test {
         image3 = traducteur.lire("image/testEcriture.ppm");
         System.out.println((imageCouleur).sont_identique(image3)); // Sensé retourner true
 
+
+        ///////////////////////////////////////////////////////////////////////////////////
+        // TEST RICHARD
         Image image;
         image = traducteur.lire("image/Sherbrooke_Frontenac_nuit.pgm");
         System.out.println(image);

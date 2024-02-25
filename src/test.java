@@ -3,7 +3,6 @@ public class test {
 
         Traducteur traducteur = new Traducteur();
 
-<<<<<<< HEAD
         Image imageCouleur;
         Image imageNoirBlanc;
 

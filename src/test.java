@@ -25,7 +25,7 @@ public class test {
 
         image3 = traducteur.lire("image/testEcriture.ppm");
         System.out.println((imageCouleur).sont_identique(image3)); // Sensé retourner true
-=======
+
         Image image;
         image = traducteur.lire("image/Sherbrooke_Frontenac_nuit.pgm");
         System.out.println(image);
@@ -34,7 +34,5 @@ public class test {
             ((ImageNoirBlanc) image).couleur_preponderante();
         }
 
-
->>>>>>> richard
     }
 }

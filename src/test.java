@@ -7,6 +7,8 @@ public class test {
         Image imageNoirBlanc;
 
         Image image3;
+        Image image4;
+
 
         imageCouleur = traducteur.lire("image/Sherbrooke_Frontenac_nuit.ppm");
         imageNoirBlanc = traducteur.lire("image/testNoirBlancNonModif.pgm");
@@ -23,6 +25,10 @@ public class test {
         imageNoirBlanc.ecrire();
 
         image3 = traducteur.lire("image/testEcriture.ppm");
+        image4 = traducteur.lire("image/test.pgm");
         System.out.println((imageCouleur).sont_identique(image3)); // Sensé retourner true
+
+        imageNoirBlanc.copier(image4);
+
     }
 }

@@ -164,7 +164,23 @@ public class Image {
      * @param i : Correspond a l'image explicite qui sera copier dans l'image implicite
      */
     public void copier(Image i) {
-
+        if (!sont_identique(i)) {
+            if (i.getClass() == this.getClass())
+            {
+                this.set_type(i.get_type());
+                this.set_chemin(i.get_chemin());
+                this.set_hauteur(i.get_hauteur());
+                this.set_largeur(i.get_largeur());
+                this.set_maxValue(i.get_maxValue());
+                this.set_matrice(i.getMatrice());
+            }
+            else {
+                System.out.print("L'image doit être du même type");
+            }
+        }
+        else {
+            System.out.print("Les deux images sont déjà identique");
+        }
     }
 
     /**

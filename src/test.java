@@ -2,6 +2,7 @@
  * Cette classe sert à tester l'implémentation des images, les sous-classes d'image, les pixels et les sous-classes
  * de pixel. Lorsque ce code est exécuté, des fichiers seront lus et certains seront écrits dans le dossier image.
  *
+ * @author Anthony Carmichael, Richard Dongmo, Maxime Malette
  */
 public class test {
     public static void main(String[] args){

@@ -71,6 +71,8 @@ public class PixelCouleur extends Pixel{
 
     /**
      * Permet de noircir ou d'éclaircir le pixel
+     * @param v Indique de combien le pixel doit être éclaircit ou noircit.
+     * @param maxVal Indique au pixel quelle est sa valeur maximale pour qu'il ne la dépasse pas.
      */
     public void eclaircir_noircir(int v, int maxVal){
         if (_red + v >= maxVal){
@@ -104,6 +106,8 @@ public class PixelCouleur extends Pixel{
 
     /**
      * Permet de vérifier si deux pixels sont identiques
+     * @param p C'est le pixel avec lequel on va comparer notre pixel
+     * @return La fonction retourne true si les deux pixels sont identiques et false si ils ne le sont pas
      */
     public boolean sont_identiques(PixelCouleur p){
         if (_red == p.get_red() && _blue == p.get_blue() && _green == p.get_green()){
@@ -121,6 +125,10 @@ public class PixelCouleur extends Pixel{
 
     /**
      * Permet de renvoyer le nouveau pixel que nous allons vouloir lors de la réduction d'une image
+     * @param p1 Un pixel qui va se combiner à notre pixel
+     * @param p2 Un pixel qui va se combiner à notre pixel
+     * @param p3 Un pixel qui va se combiner à notre pixel
+     * @return La fonction retourne le nouveau pixel fusionné
      */
     public Pixel reduire(PixelCouleur p1, PixelCouleur p2, PixelCouleur p3){
         int newRed = (_red + p1.get_red() + p2.get_red() + p3.get_red())/4;

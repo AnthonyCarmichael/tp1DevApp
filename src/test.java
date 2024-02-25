@@ -113,6 +113,5 @@ public class test {
             //((ImageCouleur) image).eclaircir_noicir(-98);
             ((ImageNoirBlanc) image).couleur_preponderante();
         }
-
     }
 }

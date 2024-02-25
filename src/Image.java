@@ -126,25 +126,31 @@ public class Image {
      * **/
     public void set_chemin(String chemin) {
         String[] cheminExtensionParam = chemin.split("\\.");
-        if ((cheminExtensionParam[1].equalsIgnoreCase("pgm") ||cheminExtensionParam[1].equalsIgnoreCase("ppm")))
-        {
-            if (Objects.equals(get_chemin(), ""))
+        try {
+            if ((cheminExtensionParam[1].equalsIgnoreCase("pgm") || cheminExtensionParam[1].equalsIgnoreCase("ppm")) && cheminExtensionParam.length ==2)
             {
-                _chemin=chemin;
+                if (Objects.equals(get_chemin(), ""))
+                {
+                    _chemin=chemin;
+                }
+                else
+                {
+                    String[] cheminExtension = get_chemin().split("\\.");
+                    if (cheminExtension[1].equals(cheminExtensionParam[1])){
+                        this._chemin = chemin;
+                    }
+                    else {
+                        System.out.println("Impossible de modifier l'extension de l'image actuel: "+ cheminExtension[1]+"\nVous avez essayer de le modifier pour : " + chemin);
+                    }
+                }
             }
-            else
-            {
-                String[] cheminExtension = get_chemin().split("\\.");
-                if (cheminExtension[1].equals(cheminExtensionParam[1])){
-                    this._chemin = chemin;
-                }
-                else {
-                    System.out.print("Impossible de modifier l'extension du fichier : "+ cheminExtension[1]);
-                }
+            else {
+                System.out.println("Type de fichier incompatible : "+"\nVous avez essayer de le modifier pour : " + chemin);
             }
         }
-        else {
-            System.out.print("Type de fichier incompatible : "+ cheminExtensionParam[1]);
+        catch (ArrayIndexOutOfBoundsException e)
+        {
+            System.out.println("ERREUR: Le chemin n'a pas été modifié, car le chemin doit avoir l'extension .ppm ou .pgm");
         }
     }
 

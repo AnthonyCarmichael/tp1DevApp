@@ -30,7 +30,7 @@ public class Traducteur {
                 return null;
             }
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+            System.out.println("ERREUR Fichier: "+path+" est inexistant!");
             //e.printStackTrace(); A revoir
             return null;
         }

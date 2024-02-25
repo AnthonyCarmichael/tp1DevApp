@@ -14,6 +14,13 @@ public class PixelCouleur extends Pixel{
     private int _blue;
 
 
+    @Override
+    public String toString(){
+        String pixel = get_red() + " " + get_green() + " " + get_blue();
+
+        return pixel;
+    }
+
 
     /**
      * Constructeur sans paramètres de la classe

@@ -10,6 +10,13 @@ public class PixelNoirBlanc extends Pixel {
      */
     private int _nuance;
 
+    @Override
+    public String toString(){
+        String pixel = get_nuance() + " ";
+
+        return pixel;
+    }
+
     /**
      * Constructeur sans paramètres de la classe
      */

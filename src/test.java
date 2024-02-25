@@ -29,9 +29,7 @@ public class test {
         image = traducteur.lire("image/test.pgm");
         System.out.println(image);
         if (image instanceof ImageNoirBlanc){
-            image.set_chemin("image/test_reduire.pgm");
-            ((ImageNoirBlanc) image).reduire();
-            System.out.println(image);
+            ((ImageNoirBlanc) image).couleur_preponderante();
         }
     }
 }

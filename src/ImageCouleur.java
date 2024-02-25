@@ -1,7 +1,9 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.*;
+
+import static java.lang.Integer.parseInt;
 
 /**
  *
@@ -13,49 +15,44 @@ import java.util.Scanner;
 
 public class ImageCouleur extends Image{
 
-    /*Cette méthode retourne la couleur prépondérante*/
+    /**
+     *
+     * Cette méthode retourne le pixel ayant la couleur prépondérante
+     * @return
+     */
     public PixelCouleur couleur_preponderante(){
-        PixelCouleur[] tabPixel = new PixelCouleur[get_hauteur() * get_largeur()];
+        HashMap<String, Integer> dict = new HashMap<String, Integer>();
 
-        /*Remplissage du tableau de pixel avec les donn/es de la matrice de pixel*/
-        int k = 0;
-
-        for (int i = 0; i < getMatrice().length; i++){
-            for (int j = 0; j < getMatrice()[i].length; j++){
-                tabPixel[k] = (PixelCouleur) getMatrice()[i][j];
-                k++;
-            }
-        }
-
-        int taille = tabPixel.length;
-        int max_count = 0;
-        PixelCouleur preponderant = new PixelCouleur();
-
-        for (int i = 0; i < taille; i++){
-            int count = 0;
-            for (int j = 0; j < taille; j++){
-                if (tabPixel[i].sont_identiques(tabPixel[j])){
-                    count++;
+        dict.put(((PixelCouleur) getMatrice()[0][0]).toString(), 0);
+        for (int i = 0; i < get_hauteur(); i++){
+            for (int j = 0; j < get_largeur(); j++){
+                if (!dict.containsKey(((PixelCouleur) getMatrice()[i][j]).toString())){
+                    dict.put(((PixelCouleur) getMatrice()[i][j]).toString(), 1);
+                }
+                else{
+                    dict.put(((PixelCouleur) getMatrice()[i][j]).toString(), dict.get(((PixelCouleur) getMatrice()[i][j]).toString()) + 1);
                 }
             }
-
-            if (count > max_count){
-                max_count = count;
-                preponderant = tabPixel[i];
-            }
         }
 
-        System.out.print("Pixel préponderant: " + preponderant.get_red() + " " + preponderant.get_green() + " " + preponderant.get_blue() + " " + max_count);
+        String  dictKey = Collections.max(dict.entrySet(), Map.Entry.comparingByValue()).getKey();
+
+        String[] rgb = dictKey.split(" ");
+
+        PixelCouleur preponderant = new PixelCouleur(parseInt(rgb[0]), parseInt(rgb[1]), parseInt(rgb[2]));
+
+        System.out.print("Pixel préponderant: " + preponderant);
 
         return preponderant;
     }
 
     /**
      *
-     * @param valeur la valeur passer en paramétre doit être possitve ou
-     * négative. Si la valeur est positive, l’image devient plus noire,
-     * si la valeur est négative, l’image devient plus claire
-     *
+     * Cette fonction permet d'éclaircir ou noircir une image en couleur
+     * en fonction de la variable passée en paramétre. Si la valeur est
+     * positive, l’image devient plus noire, si la valeur est négative,
+     * l’image devient plus claire
+     * @param valeur
      */
     public void eclaircir_noicir(int valeur){
         for (short i = 0; i < getMatrice().length; i++){
@@ -65,7 +62,10 @@ public class ImageCouleur extends Image{
         }
     }
 
-    /*Cette méthode réduit le pixel*/
+    /**
+     *
+     * Cette méthode réduit la matrice de pixel de l'image de couleur
+     */
     public void reduire(){
 
         set_hauteur((short) (get_hauteur()/2));
@@ -82,6 +82,12 @@ public class ImageCouleur extends Image{
         set_matrice(matriceReduite);
     }
 
+    /**
+     *
+     * Cette méthode permet d'effectuer la lecture d'une image de couleur
+     * @param scannerLecture
+     * @param path
+     */
     public void lire(Scanner scannerLecture, String path){
         this.set_chemin(path);
         this.set_type(scannerLecture.next());
@@ -119,6 +125,12 @@ public class ImageCouleur extends Image{
         }
     }
 
+    /**
+     *
+     * Cette méthode permet de savoir si deux image de couleur sont identique
+     * @param image
+     * @return
+     */
     public boolean matrice_identique(Image image) {
         for (int i = 0; i < get_hauteur(); i++){
             for (int j = 0 ; j < get_largeur(); j++) {
@@ -130,6 +142,12 @@ public class ImageCouleur extends Image{
         return true;
     }
 
+    /**
+     *
+     * Cette méthode permet d'écrire une image de couleur
+     * @param writer
+     * @throws IOException
+     */
     public void ecrire(BufferedWriter writer) throws IOException {
         short cpt = 0;
         for (int i = 0; i < get_hauteur(); i++) {

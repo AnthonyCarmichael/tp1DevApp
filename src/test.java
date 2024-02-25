@@ -1,3 +1,8 @@
+/**
+ * Cette classe sert à tester l'implémentation des images, les sous-classes d'image, les pixels et les sous-classes
+ * de pixel. Lorsque ce code est exécuté, des fichiers seront lus et certains seront écrits dans le dossier image.
+ *
+ */
 public class test {
     public static void main(String[] args){
         // Instanciation des objets
@@ -12,6 +17,10 @@ public class test {
         // Opération Lecture a l'aide d'un traducteur qui retourne la bonne categorie d'image
         imageCouleur = traducteur.lire("image/Sherbrooke_Frontenac_nuit.ppm");
         imageNoirBlanc = traducteur.lire("image/testNoirBlancNonModif.pgm");
+        System.out.println("Images initialisées : ");
+        System.out.println(imageCouleur);
+        System.out.println(imageNoirBlanc);
+        System.out.print("\n");
 
 
         // Opération sont_identiques: Test lorsque les deux images sont différentes
@@ -35,6 +44,13 @@ public class test {
         // Lecture des nouveaux fichiers précédament créés
         image3Couleur = traducteur.lire("image/testEcriture.ppm");
         image4NoirBlanc = traducteur.lire("image/test.pgm");
+
+        System.out.println("Actualisation des images initialisées : ");
+        System.out.println(imageCouleur);
+        System.out.println(imageNoirBlanc);
+        System.out.println(image3Couleur);
+        System.out.println(image4NoirBlanc);
+        System.out.print("\n");
 
         // Test sont_identique imageCouleur initial et une autre image qui provient du fichier apres l'écriture
         System.out.println("TEST Sont_identique (sensé retourner true): ");

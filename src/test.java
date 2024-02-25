@@ -3,7 +3,6 @@ public class test {
 
         Traducteur traducteur = new Traducteur();
 
-<<<<<<< HEAD
         Image imageCouleur;
         Image imageNoirBlanc;
 
@@ -25,16 +24,14 @@ public class test {
 
         image3 = traducteur.lire("image/testEcriture.ppm");
         System.out.println((imageCouleur).sont_identique(image3)); // Sensé retourner true
-=======
+
         Image image;
-        image = traducteur.lire("image/Sherbrooke_Frontenac_nuit.pgm");
+        image = traducteur.lire("image/test.pgm");
         System.out.println(image);
         if (image instanceof ImageNoirBlanc){
-            //((ImageCouleur) image).eclaircir_noicir(-98);
-            ((ImageNoirBlanc) image).couleur_preponderante();
+            image.set_chemin("image/test_reduire.pgm");
+            ((ImageNoirBlanc) image).reduire();
+            System.out.println(image);
         }
-
-
->>>>>>> richard
     }
 }

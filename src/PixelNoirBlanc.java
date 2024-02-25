@@ -76,8 +76,9 @@ public class PixelNoirBlanc extends Pixel {
      * @param p3 Un pixel qui va se combiner à notre pixel
      * @return La fonction retourne le nouveau pixel fusionné
      */
-    public Pixel reduire(PixelNoirBlanc p1, PixelNoirBlanc p2, PixelNoirBlanc p3){
+    public PixelNoirBlanc reduire(PixelNoirBlanc p1, PixelNoirBlanc p2, PixelNoirBlanc p3){
        int newNuance = (_nuance + p1.get_nuance() + p2.get_nuance() + p3.get_nuance())/4;
+       System.out.println(newNuance);
        PixelNoirBlanc newPixel = new PixelNoirBlanc(newNuance);
        return newPixel;
     }

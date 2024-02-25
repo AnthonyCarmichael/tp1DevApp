@@ -68,6 +68,18 @@ public class ImageCouleur extends Image{
     /*Cette méthode réduit le pixel*/
     public void reduire(){
 
+        set_hauteur((short) (get_hauteur()/2));
+        set_largeur((short) (get_largeur()/2));
+
+        PixelCouleur[][] matriceReduite = new PixelCouleur[get_hauteur()][get_largeur()];
+
+        for (int i = 0; i < get_hauteur(); i++) {
+            for (int j = 0; j < get_largeur(); j++) {
+                matriceReduite[i][j] = ((PixelCouleur) getMatrice()[2*i][2*j]).reduire(((PixelCouleur) getMatrice()[2*i][2*j+1]), ((PixelCouleur) getMatrice()[2*i+1][2*j]), ((PixelCouleur) getMatrice()[2*i+1][2*j+1]));
+            }
+        }
+
+        set_matrice(matriceReduite);
     }
 
     public void lire(Scanner scannerLecture, String path){

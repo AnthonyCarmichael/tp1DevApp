@@ -67,21 +67,18 @@ public class ImageNoirBlanc extends Image{
 
     /*Cette méthode réduit le pixel*/
     public void reduire(){
-        int hauteur = get_hauteur();
-        int largeur = get_largeur();
+        set_hauteur((short) (get_hauteur()/2));
+        set_largeur((short) (get_largeur()/2));
 
-        int newHauteur = hauteur / 4;
-        int newLargeur = largeur / 4;
+        PixelNoirBlanc[][] matriceReduite = new PixelNoirBlanc[get_hauteur()][get_largeur()];
 
-        PixelNoirBlanc[][] matriceReduite = new PixelNoirBlanc[newHauteur][newLargeur];
-
-        for (int i = 0; i < newHauteur; i++) {
-            for (int j = 0; j < newLargeur; j++) {
-                if (getMatrice()[4*i][4*j] instanceof PixelNoirBlanc){
-                    matriceReduite[i][j] = ((PixelNoirBlanc) getMatrice()[4*i][4*j]).reduire(((PixelNoirBlanc) getMatrice()[4*i+1][4*j]), ((PixelNoirBlanc) getMatrice()[4*i+2][4*j]), ((PixelNoirBlanc) getMatrice()[4*i+3][4*j]));
-                }
+        for (int i = 0; i < get_hauteur(); i++) {
+            for (int j = 0; j < get_largeur(); j++) {
+                matriceReduite[i][j] = ((PixelNoirBlanc) getMatrice()[2*i][2*j]).reduire(((PixelNoirBlanc) getMatrice()[2*i][2*j+1]), ((PixelNoirBlanc) getMatrice()[2*i+1][2*j]), ((PixelNoirBlanc) getMatrice()[2*i+1][2*j+1]));
             }
         }
+
+        set_matrice(matriceReduite);
     }
 
     public void lire(Scanner scannerLecture, String path){

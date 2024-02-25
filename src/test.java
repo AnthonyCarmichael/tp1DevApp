@@ -113,5 +113,12 @@ public class test {
             //((ImageCouleur) image).eclaircir_noicir(-98);
             ((ImageNoirBlanc) image).couleur_preponderante();
         }
+
+        Image testRotation = image3Couleur;
+        testRotation.set_chemin("image/testRotation.ppm");
+        testRotation.pivoter90();
+        testRotation.pivoter90();
+        testRotation.ecrire();
+
     }
 }

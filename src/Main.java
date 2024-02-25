@@ -25,7 +25,7 @@ i.set_hauteur(4);
 
         i.pivoter90();
 
-        // Print the rotated matrix
+        //Print the rotated matrix
         i.displayMatrix();
 
         i.pivoter90();

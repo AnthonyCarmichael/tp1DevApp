@@ -135,7 +135,7 @@ public class ImageNoirBlanc extends Image{
             for (int j = 0; j < get_largeur(); j++) {
                 writer.write(((PixelNoirBlanc) getMatrice()[i][j]).get_nuance() + " ");
                 cpt++;
-                if (cpt == 21) {
+                if (cpt == 21 || j ==get_largeur() -1) {
                     writer.write("\n");
                     cpt = 0;
                 }

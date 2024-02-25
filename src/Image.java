@@ -164,7 +164,23 @@ public class Image {
      * @param i : Correspond a l'image explicite qui sera copier dans l'image implicite
      */
     public void copier(Image i) {
-
+        if (!sont_identique(i)) {
+            if (i.getClass() == this.getClass())
+            {
+                this.set_type(i.get_type());
+                this.set_chemin(i.get_chemin());
+                this.set_hauteur(i.get_hauteur());
+                this.set_largeur(i.get_largeur());
+                this.set_maxValue(i.get_maxValue());
+                this.set_matrice(i.getMatrice());
+            }
+            else {
+                System.out.print("L'image doit être du même type");
+            }
+        }
+        else {
+            System.out.print("Les deux images sont déjà identique");
+        }
     }
 
     /**
@@ -175,8 +191,25 @@ public class Image {
      * @param col2 : Concerne la colone dans la matrice du pixel coin bas/droite de la partie a extraire
      */
     public Image extraire(short l1, short col1, short l2, short col2 ) {
-        Image newImage = new Image();
-        return newImage;
+
+        if (l1 >= 0 && l1 < l2  && l2 < get_hauteur() && col1 >= 0 && col1 < col2 && col2 < get_largeur())
+        {
+            Image newImage = this;
+            newImage.set_hauteur((short) (l2-l1+1));
+            newImage.set_largeur((short) (col2-col1+1));
+            Pixel[][] newMatrice = new Pixel[newImage.get_hauteur()][newImage.get_largeur()];
+            for (int i = 0; i < newImage.get_hauteur(); i++) {
+                for (int j = 0; j < get_largeur(); j++) {
+                    newMatrice[i][j]=this.getMatrice()[l1+i][col1+j];
+                }
+            }
+            newImage.set_matrice(newMatrice);
+            return newImage;
+        }
+        else {
+            System.out.print("Les paramètre doivent être le point haut gauche et le point bas droite dans la matrice");
+        }
+        return null;
     }
 
     /**

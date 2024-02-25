@@ -142,4 +142,28 @@ public class ImageNoirBlanc extends Image{
             }
         }
     }
+
+    /**
+     * Permet d'extraire une partie d'image pour en former une nouvelle image
+     * @param l1 : Concerne la ligne dans la matrice du pixel coin haut/gauche de la partie a extraire
+     * @param col1 : Concerne la colone dans la matrice du pixel coin haut/gauche de la partie a extraire
+     * @param l2 : Concerne la ligne dans la matrice du pixel coin bas/droite de la partie a extraire
+     * @param col2 : Concerne la colone dans la matrice du pixel coin bas/droite de la partie a extraire
+     */
+    public ImageNoirBlanc extraire(short l1, short col1, short l2, short col2 ) {
+        ImageNoirBlanc newImage = new ImageNoirBlanc();
+        newImage.set_type(get_type());
+        newImage.set_maxValue(get_maxValue());
+        newImage.set_chemin(get_chemin());
+        newImage.set_hauteur((short) (l2-l1+1));
+        newImage.set_largeur((short) (col2-col1+1));
+        PixelNoirBlanc[][] newMatrice = new PixelNoirBlanc[newImage.get_hauteur()][newImage.get_largeur()];
+        for (int i = 0; i < newImage.get_hauteur(); i++) {
+            for (int j = 0; j < newImage.get_largeur(); j++) {
+                newMatrice[i][j] = (PixelNoirBlanc)getMatrice()[l1+i][col1+j];
+            }
+        }
+        newImage.set_matrice(newMatrice);
+        return newImage;
+    }
 }

@@ -33,6 +33,10 @@ public class Image {
         this.set_matrice(matrice);
     }
 
+    Image(Image i) {
+        this.copier(i);
+    }
+
     @Override
     public String toString(){
         return "Type: " +_type +" | Chemin: " + _chemin + " | Hauteur: " + _hauteur + " | Largeur: " + _largeur + " | MaxVal: " + get_maxValue();
@@ -183,28 +187,18 @@ public class Image {
         }
     }
 
-    /**
-     * Permet d'extraire une partie d'image pour en former une nouvelle image
-     * @param l1 : Concerne la ligne dans la matrice du pixel coin haut/gauche de la partie a extraire
-     * @param col1 : Concerne la colone dans la matrice du pixel coin haut/gauche de la partie a extraire
-     * @param l2 : Concerne la ligne dans la matrice du pixel coin bas/droite de la partie a extraire
-     * @param col2 : Concerne la colone dans la matrice du pixel coin bas/droite de la partie a extraire
-     */
-    public Image extraire(short l1, short col1, short l2, short col2 ) {
 
+    public Image extraire(short l1, short col1, short l2, short col2 ) {
         if (l1 >= 0 && l1 < l2  && l2 < get_hauteur() && col1 >= 0 && col1 < col2 && col2 < get_largeur())
         {
-            Image newImage = this;
-            newImage.set_hauteur((short) (l2-l1+1));
-            newImage.set_largeur((short) (col2-col1+1));
-            Pixel[][] newMatrice = new Pixel[newImage.get_hauteur()][newImage.get_largeur()];
-            for (int i = 0; i < newImage.get_hauteur(); i++) {
-                for (int j = 0; j < get_largeur(); j++) {
-                    newMatrice[i][j]=this.getMatrice()[l1+i][col1+j];
-                }
+            String[] cheminExtension = get_chemin().split("\\.");
+            if (cheminExtension[1].equals("pgm") && this instanceof ImageNoirBlanc) {
+                return ((ImageNoirBlanc)this).extraire(l1,col1,l2,col2);
             }
-            newImage.set_matrice(newMatrice);
-            return newImage;
+            else if (cheminExtension[1].equals("ppm") && this instanceof ImageCouleur)
+            {
+                return ((ImageCouleur)this).extraire(l1,col1,l2,col2);
+            }
         }
         else {
             System.out.print("Les paramètre doivent être le point haut gauche et le point bas droite dans la matrice");
@@ -263,6 +257,4 @@ public class Image {
         _largeur = _hauteur;
         _hauteur = temp;
     }
-
-
 }

@@ -9,7 +9,8 @@ public class test {
 
         Image image3;
         Image image4;
-
+        Image imageExtraite;
+        Image imageExtraiteCouleur;
 
         imageCouleur = traducteur.lire("image/Sherbrooke_Frontenac_nuit.ppm");
         imageNoirBlanc = traducteur.lire("image/testNoirBlancNonModif.pgm");
@@ -29,11 +30,17 @@ public class test {
         image4 = traducteur.lire("image/test.pgm");
         System.out.println((imageCouleur).sont_identique(image3)); // Sensé retourner true
 
+        // Test extraire et copier NoirBlanc
         imageNoirBlanc.copier(image4);
-        image4.extraire((short)1,(short)13,(short)5,(short)16);
-        image4.set_chemin("image/testExtraire.pgm");
-        //imageCouleur.pivoter90();
-        image4.ecrire();
+        imageExtraite = image4.extraire((short)1,(short)13,(short)5,(short)16);
+        imageExtraite.set_chemin("image/testExtraire.pgm");
+        imageExtraite.ecrire();
+
+        // Test extraire et copier Couleur
+        imageExtraiteCouleur = imageCouleur.extraire((short)25,(short)25,(short)150,(short)225);
+        imageExtraiteCouleur.set_chemin("image/testExtraireCouleur.ppm");
+        imageExtraiteCouleur.ecrire();
+        imageCouleur.copier(imageExtraiteCouleur);
 
         ///////////////////////////////////////////////////////////////////////////////////
         // TEST RICHARD
@@ -44,8 +51,6 @@ public class test {
             //((ImageCouleur) image).eclaircir_noicir(-98);
             ((ImageNoirBlanc) image).couleur_preponderante();
         }
-
-
 
     }
 }

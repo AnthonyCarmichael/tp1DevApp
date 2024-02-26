@@ -12,9 +12,7 @@ public class PixelNoirBlanc extends Pixel {
 
     @Override
     public String toString(){
-        String pixel = get_nuance() + " ";
-
-        return pixel;
+        return Integer.toString(get_nuance());
     }
 
     /**

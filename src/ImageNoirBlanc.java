@@ -44,8 +44,6 @@ public class ImageNoirBlanc extends Image{
 
         PixelNoirBlanc preponderant = new PixelNoirBlanc(parseInt(rgb[0]));
 
-        System.out.print("Pixel préponderant: " + preponderant);
-
         return preponderant;
     }
 

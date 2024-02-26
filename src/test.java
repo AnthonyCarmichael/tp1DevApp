@@ -134,7 +134,7 @@ public class test {
         Image testCouleurPreponderante;
         testCouleurPreponderante = traducteur.lire("image/Sherbrooke_Frontenac_nuit.ppm");
         System.out.println(testCouleurPreponderante);
-        System.out.println(testCouleurPreponderante.couleur_preponderante());
+        System.out.println("Couleur prépondérante : "+testCouleurPreponderante.couleur_preponderante());
 
     }
 }

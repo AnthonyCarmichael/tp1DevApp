@@ -40,8 +40,6 @@ public class ImageCouleur extends Image{
 
         PixelCouleur preponderant = new PixelCouleur(parseInt(rgb[0]), parseInt(rgb[1]), parseInt(rgb[2]));
 
-        System.out.print("Pixel préponderant: " + preponderant);
-
         return preponderant;
     }
 

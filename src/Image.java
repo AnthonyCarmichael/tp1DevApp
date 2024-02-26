@@ -292,6 +292,10 @@ public class Image {
         _hauteur = temp;
     }
 
+    /**
+     * Appelle la méthode reduire associée a la bonne sous-classe
+     * @author Anthony Carmichael
+     */
     public void reduire(){
         if (this instanceof ImageCouleur)
         {
@@ -301,6 +305,11 @@ public class Image {
         }
     }
 
+    /**
+     * Appelle la méthode eclaircir_noicir associée a la bonne sous-classe
+     * @param valeur correspond a une addition ou une soustraction de la couleur
+     * @author Anthony Carmichael
+     */
     public void eclaircir_noicir(int valeur){
         if (this instanceof ImageCouleur)
         {
@@ -310,6 +319,10 @@ public class Image {
         }
     }
 
+    /**
+     * Appelle la méthode couleur_preponderante associée a la bonne sous-classe
+     * @author Anthony Carmichael
+     */
     public Pixel couleur_preponderante(){
         if (this instanceof ImageCouleur)
         {

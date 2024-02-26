@@ -10,7 +10,6 @@ import java.util.Scanner;
  *
  * cette classe implémente une image en couleur
  */
-
 public class ImageCouleur extends Image{
 
     /*Cette méthode retourne la couleur prépondérante*/
@@ -55,7 +54,6 @@ public class ImageCouleur extends Image{
      * @param valeur la valeur passer en paramétre doit être possitve ou
      * négative. Si la valeur est positive, l’image devient plus noire,
      * si la valeur est négative, l’image devient plus claire
-     *
      */
     public void eclaircir_noicir(int valeur){
         for (short i = 0; i < getMatrice().length; i++){
@@ -82,6 +80,13 @@ public class ImageCouleur extends Image{
         set_matrice(matriceReduite);
     }
 
+    /**
+     * Cette méthode sert attribuer les informations lus dans le fichier à l'objet
+     *
+     * @param scannerLecture continue la lecture qui est entammé dans le traducteur
+     * @param path concerne le chemin du fichier présentement lu
+     * @author Anthony Carmichael
+     */
     public void lire(Scanner scannerLecture, String path){
         this.set_chemin(path);
         this.set_type(scannerLecture.next());
@@ -119,6 +124,14 @@ public class ImageCouleur extends Image{
         }
     }
 
+    /**
+     * Vérifie si l'image implicite et explicite sont identiques.
+     * Cette méthode est appelée dans sont_identique Image.
+     *
+     * @param image L'image explicite qui sera comparée.
+     * @return true si les images sont identiques, sinon false.
+     * @author Anthony Carmichael
+     */
     public boolean matrice_identique(Image image) {
         for (int i = 0; i < get_hauteur(); i++){
             for (int j = 0 ; j < get_largeur(); j++) {
@@ -130,6 +143,12 @@ public class ImageCouleur extends Image{
         return true;
     }
 
+    /**
+     * Écriture pour exporter une image dans un fichier.
+     *
+     * @param writer concerne le flux en écriture entamer dans la méthode ecrire d'image
+     * @author Anthony Carmichael
+     */
     public void ecrire(BufferedWriter writer) throws IOException {
         short cpt = 0;
         for (int i = 0; i < get_hauteur(); i++) {
@@ -142,5 +161,32 @@ public class ImageCouleur extends Image{
                 }
             }
         }
+    }
+
+    /**
+     * Permet d'extraire une partie d'image pour former une nouvelle image.
+     *
+     * @param l1 La ligne de la matrice du pixel du coin haut/gauche de la partie à extraire.
+     * @param col1 La colonne de la matrice du pixel du coin haut/gauche de la partie à extraire.
+     * @param l2 La ligne de la matrice du pixel du coin bas/droite de la partie à extraire.
+     * @param col2 La colonne de la matrice du pixel du coin bas/droite de la partie à extraire.
+     * @return Une nouvelle image extraite à partir de la région spécifiée.
+     * @author Anthony Carmichael
+     */
+    public ImageCouleur extraire(short l1, short col1, short l2, short col2 ) {
+        ImageCouleur newImage = new ImageCouleur();
+        newImage.set_type(get_type());
+        newImage.set_maxValue(get_maxValue());
+        newImage.set_chemin(get_chemin());
+        newImage.set_hauteur((short) (l2-l1+1));
+        newImage.set_largeur((short) (col2-col1+1));
+        PixelCouleur[][] newMatrice = new PixelCouleur[newImage.get_hauteur()][newImage.get_largeur()];
+        for (int i = 0; i < newImage.get_hauteur(); i++) {
+            for (int j = 0; j < newImage.get_largeur(); j++) {
+                newMatrice[i][j] = (PixelCouleur) getMatrice()[l1+i][col1+j];
+            }
+        }
+        newImage.set_matrice(newMatrice);
+        return newImage;
     }
 }

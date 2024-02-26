@@ -81,6 +81,13 @@ public class ImageNoirBlanc extends Image{
         set_matrice(matriceReduite);
     }
 
+    /**
+     * Cette méthode sert attribuer les informations lus dans le fichier à l'objet
+     *
+     * @param scannerLecture continue la lecture qui est entammé dans le traducteur
+     * @param path concerne le chemin du fichier présentement lu
+     * @author Anthony Carmichael
+     */
     public void lire(Scanner scannerLecture, String path){
         this.set_chemin(path);
         this.set_type(scannerLecture.next());

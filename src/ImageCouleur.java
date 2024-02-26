@@ -43,9 +43,6 @@ public class ImageCouleur extends Image{
                 preponderant = tabPixel[i];
             }
         }
-
-        System.out.print("Pixel préponderant: " + preponderant.get_red() + " " + preponderant.get_green() + " " + preponderant.get_blue() + " " + max_count);
-
         return preponderant;
     }
 

@@ -61,7 +61,6 @@ public class test {
         System.out.println((imageCouleur).sont_identique(image3Couleur)); // Sensé retourner true
         System.out.print("\n");
 
-
         // Test copier deux type différent
         System.out.println("TEST copier Type différent (ne doit pas copier): ");
         System.out.println("Images avant la copie: ");
@@ -105,22 +104,37 @@ public class test {
         System.out.println(imageExtraiteCouleur);
         System.out.print("\n");
 
-        ///////////////////////////////////////////////////////////////////////////////////
-        // TEST RICHARD
-        Image image;
-        image = traducteur.lire("image/test.pgm");
-        System.out.println(image);
-        if (image instanceof ImageNoirBlanc){
-            image.set_chemin("image/test_reduire.pgm");
-            ((ImageNoirBlanc) image).reduire();
-            System.out.println(image);
-        }
+        // Test réduire
+        Image imageReduite;
+        imageReduite = traducteur.lire("image/test.pgm");
+        System.out.println(imageReduite);
 
+        imageReduite.set_chemin("image/test_reduire.pgm");
+        imageReduite.reduire();
+        System.out.println(imageReduite);
+
+        // Test rotation
         Image testRotation = image3Couleur;
         testRotation.set_chemin("image/testRotation.ppm");
         testRotation.pivoter90();
         testRotation.pivoter90();
         testRotation.ecrire();
+        System.out.print("\n");
+
+        // Test éclaircir noircir
+        Image testEclaircirNoircir;
+        testEclaircirNoircir = traducteur.lire("image/Sherbrooke_Frontenac_nuit.ppm");
+        System.out.println(testEclaircirNoircir);
+        testEclaircirNoircir.eclaircir_noicir(50);
+        testEclaircirNoircir.set_chemin("image/testEclaircir.ppm");
+        testEclaircirNoircir.ecrire();
+        System.out.print("\n");
+
+        // Test couleur préponderante
+        Image testCouleurPreponderante;
+        testCouleurPreponderante = traducteur.lire("image/Sherbrooke_Frontenac_nuit.ppm");
+        System.out.println(testCouleurPreponderante);
+        System.out.println(testCouleurPreponderante.couleur_preponderante());
 
     }
 }

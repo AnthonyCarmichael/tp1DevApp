@@ -113,9 +113,7 @@ public class ImageNoirBlanc extends Image{
             }
             this.set_matrice(tabPixel);
 
-            //System.out.println(Arrays.toString(tabPixel));
             scannerLecture.close();
-
         }
         else {
             System.out.println("ERREUR: Le fichier "+path+" ne correspond pas au bon type : "+this.get_type());

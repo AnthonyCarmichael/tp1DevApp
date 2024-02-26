@@ -291,4 +291,32 @@ public class Image {
         _largeur = _hauteur;
         _hauteur = temp;
     }
+
+    public void reduire(){
+        if (this instanceof ImageCouleur)
+        {
+            ((ImageCouleur)this).reduire();
+        } else if (this instanceof ImageNoirBlanc) {
+            ((ImageNoirBlanc)this).reduire();
+        }
+    }
+
+    public void eclaircir_noicir(int valeur){
+        if (this instanceof ImageCouleur)
+        {
+            ((ImageCouleur)this).eclaircir_noicir(valeur);
+        } else if (this instanceof ImageNoirBlanc) {
+            ((ImageNoirBlanc)this).eclaircir_noicir(valeur);
+        }
+    }
+
+    public Pixel couleur_preponderante(){
+        if (this instanceof ImageCouleur)
+        {
+            return ((ImageCouleur)this).couleur_preponderante();
+        } else if (this instanceof ImageNoirBlanc) {
+            return ((ImageNoirBlanc)this).couleur_preponderante();
+        }
+        else return null;
+    }
 }

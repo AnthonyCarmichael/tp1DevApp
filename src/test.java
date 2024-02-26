@@ -115,5 +115,12 @@ public class test {
             ((ImageNoirBlanc) image).reduire();
             System.out.println(image);
         }
+
+        Image testRotation = image3Couleur;
+        testRotation.set_chemin("image/testRotation.ppm");
+        testRotation.pivoter90();
+        testRotation.pivoter90();
+        testRotation.ecrire();
+
     }
 }

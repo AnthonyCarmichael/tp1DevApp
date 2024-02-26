@@ -122,8 +122,15 @@ public class ImageNoirBlanc extends Image{
         }
     }
 
+    /**
+     * Vérifie si l'image implicite et explicite sont identiques.
+     * Cette méthode est appelée dans sont_identique Image.
+     *
+     * @param image L'image explicite qui sera comparée.
+     * @return true si les images sont identiques, sinon false.
+     * @author Anthony Carmichael
+     */
     public boolean matrice_identique(Image image) {
-
         for (int i = 0; i < get_hauteur(); i++){
             for (int j = 0 ; j < get_largeur(); j++) {
                 if (!((PixelNoirBlanc)this.getMatrice()[i][j]).sont_identiques(((PixelNoirBlanc)(image.getMatrice())[i][j]))) {
@@ -134,17 +141,50 @@ public class ImageNoirBlanc extends Image{
         return true;
     }
 
+    /**
+     * Écriture pour exporter une image dans un fichier.
+     *
+     * @param writer concerne le flux en écriture entamer dans la méthode ecrire d'image
+     * @author Anthony Carmichael
+     */
     public void ecrire(BufferedWriter writer) throws IOException {
         short cpt =0;
         for (int i = 0; i < get_hauteur(); i++) {
             for (int j = 0; j < get_largeur(); j++) {
                 writer.write(((PixelNoirBlanc) getMatrice()[i][j]).get_nuance() + " ");
                 cpt++;
-                if (cpt == 21) {
+                if (cpt == 21 || j ==get_largeur() -1) {
                     writer.write("\n");
                     cpt = 0;
                 }
             }
         }
+    }
+
+    /**
+     * Permet d'extraire une partie d'image pour former une nouvelle image.
+     *
+     * @param l1 La ligne de la matrice du pixel du coin haut/gauche de la partie à extraire.
+     * @param col1 La colonne de la matrice du pixel du coin haut/gauche de la partie à extraire.
+     * @param l2 La ligne de la matrice du pixel du coin bas/droite de la partie à extraire.
+     * @param col2 La colonne de la matrice du pixel du coin bas/droite de la partie à extraire.
+     * @return Une nouvelle image extraite à partir de la région spécifiée.
+     * @author Anthony Carmichael
+     */
+    public ImageNoirBlanc extraire(short l1, short col1, short l2, short col2 ) {
+        ImageNoirBlanc newImage = new ImageNoirBlanc();
+        newImage.set_type(get_type());
+        newImage.set_maxValue(get_maxValue());
+        newImage.set_chemin(get_chemin());
+        newImage.set_hauteur((short) (l2-l1+1));
+        newImage.set_largeur((short) (col2-col1+1));
+        PixelNoirBlanc[][] newMatrice = new PixelNoirBlanc[newImage.get_hauteur()][newImage.get_largeur()];
+        for (int i = 0; i < newImage.get_hauteur(); i++) {
+            for (int j = 0; j < newImage.get_largeur(); j++) {
+                newMatrice[i][j] = (PixelNoirBlanc)getMatrice()[l1+i][col1+j];
+            }
+        }
+        newImage.set_matrice(newMatrice);
+        return newImage;
     }
 }

@@ -6,17 +6,16 @@ import java.util.*;
 import static java.lang.Integer.parseInt;
 
 /**
+ * Cette classe implémente une image en couleur
  *
- * @author Anthony Carmichael, Maxime Malette, Richard Dongmo
- * @version 1.0
- *
- * cette classe implémente une image en couleur
+ *  @author Anthony Carmichael, Maxime Malette, Richard Dongmo
+ *  @version 1.0
  */
 public class ImageCouleur extends Image{
 
     /**
-     *
      * Cette méthode retourne le pixel ayant la couleur prépondérante
+     *
      * @return
      */
     public PixelCouleur couleur_preponderante(){
@@ -49,7 +48,8 @@ public class ImageCouleur extends Image{
      * en fonction de la variable passée en paramétre. Si la valeur est
      * positive, l’image devient plus noire, si la valeur est négative,
      * l’image devient plus claire
-     * @param valeur
+     *
+     * @param valeur correspond a la
      */
     public void eclaircir_noicir(int valeur){
         for (short i = 0; i < getMatrice().length; i++){

@@ -1,8 +1,8 @@
 /**
- * @author Anthony Carmichael, Maxime Malette, Richard Dongmo
- * @version 1.0
- *
  * La classe PixelNoirBlanc est la classe enfant de Pixel qui va gérer les pixels des images en noir et blanc.
+ *
+ *  @author Anthony Carmichael, Maxime Malette, Richard Dongmo
+ *  @version 1.0
  */
 public class PixelNoirBlanc extends Pixel {
     /**

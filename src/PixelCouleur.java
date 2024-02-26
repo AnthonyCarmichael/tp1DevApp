@@ -1,8 +1,8 @@
 /**
- * @author Anthony Carmichael, Maxime Malette, Richard Dongmo
- * @version 1.0
- *
  * La classe PixelCouleur est la classe enfant de Pixel qui va gérer les pixels des images en couleurs.
+ *
+ *  @author Anthony Carmichael, Maxime Malette, Richard Dongmo
+ *  @version 1.0
  */
 public class PixelCouleur extends Pixel{
 

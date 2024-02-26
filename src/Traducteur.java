@@ -2,7 +2,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-
+/**
+ * Cette classe sert à l'implémentation des images, il renvoi un objet d'une sous-classe créé a partir d'une lecture
+ * de fichier
+ *
+ * @author Anthony Carmichael
+ */
 public class Traducteur {
     public Image lire(String path) {
         try {

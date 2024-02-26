@@ -1,16 +1,16 @@
-/**
- * @author Anthony Carmichael, Richard Dongmo, Maxime Malette
- * @version 1.0
- *
- * Cette classe implémente une image.
- */
+
 
 import java.io.*;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner; // Import the Scanner class to read text files
 
-
+/**
+ * Cette classe implémente une image.
+ *
+ *  @author Anthony Carmichael, Richard Dongmo, Maxime Malette
+ *  @version 1.0
+ */
 public class Image {
     protected String _type;
     protected short _largeur;
@@ -65,65 +65,92 @@ public class Image {
         this.set_matrice(matrice);
     }
 
-    /** Getteur du type d'image
-     * @author Anthony Carmichael **/
+    /**
+     * Getteur du type d'image
+     *
+     * @author Anthony Carmichael
+     **/
     public String get_type() {
         return _type;
     }
 
-    /** Setteur du type d'image
-     * @author Anthony Carmichael **/
+    /**
+     * Setteur du type d'image
+     *
+     * @author Anthony Carmichael
+     **/
     public void set_type(String _type) {
         this._type = _type;
     }
 
-    /** Getteur largeur de l'image
-     * @author Anthony Carmichael **/
+    /**
+     * Getteur largeur de l'image
+     *
+     * @author Anthony Carmichael
+     **/
     public short get_largeur() {
         return _largeur;
     }
 
-    /** Setteur de la largeur de l'image
-     * @author Anthony Carmichael **/
+    /**
+     * Setteur de la largeur de l'image
+     *
+     * @author Anthony Carmichael
+     **/
     public void set_largeur(short _largeur) {
         this._largeur = _largeur;
     }
 
-    /** Getteur hauteur de l'image
-     * @author Anthony Carmichael **/
+    /**
+     * Getteur hauteur de l'image
+     *
+     * @author Anthony Carmichael
+     **/
     public short get_hauteur() {
         return _hauteur;
     }
 
-    /** Setteur de la hauteur de l'image
-     * @author Anthony Carmichael **/
+    /**
+     * Setteur de la hauteur de l'image
+     *
+     * @author Anthony Carmichael
+     **/
     public void set_hauteur(short _hauteur) {
         this._hauteur = _hauteur;
     }
 
-    /** Getteur de la valeur maximal du gradiant de valeur
-     * @author Anthony Carmichael **/
+    /**
+     * Getteur de la valeur maximal du gradiant de valeur
+     *
+     * @author Anthony Carmichael
+     **/
     public int get_maxValue() {
         return _maxValue;
     }
 
-    /** Setteur de la valeur maximal du gradiant de valeur
-     * @author Anthony Carmichael **/
+    /**
+     * Setteur de la valeur maximal du gradiant de valeur
+     * @author Anthony Carmichael
+     **/
     public void set_maxValue(int _maxValue) {
         this._maxValue = _maxValue;
     }
 
-    /** Getteur du chemin de l'image
-     * @author Anthony Carmichael **/
+    /**
+     * Getteur du chemin de l'image
+     *
+     * @author Anthony Carmichael
+     **/
     public String get_chemin() {
         return _chemin;
     }
 
-    /** Setteur du chemin de l'image
+    /**
+     * Setteur du chemin de l'image
      * Une fois qu'une image a une sous-classe, sont nouveau chemin doit respecter le type d'image
      *
      * @author Anthony Carmichael
-     * **/
+     **/
     public void set_chemin(String chemin) {
         String[] cheminExtensionParam = chemin.split("\\.");
         try {
@@ -154,13 +181,17 @@ public class Image {
         }
     }
 
-    /** Getteur de la matrice de pixel
+    /**
+     * Getteur de la matrice de pixel
+     *
      * @author Anthony Carmichael **/
     public Pixel[][] getMatrice() {
         return _matrice;
     }
 
-    /** Setteur de la matrice de pixel
+    /**
+     * Setteur de la matrice de pixel
+     *
      * @author Anthony Carmichael **/
     public void set_matrice(Pixel[][] matrice) {
         this._matrice = matrice;
@@ -168,6 +199,7 @@ public class Image {
 
     /**
      * Écriture pour exporter notre image dans un fichier
+     *
      * @author Anthony Carmichael
      */
     public void ecrire() {
@@ -192,6 +224,7 @@ public class Image {
 
     /**
      * Copier une image explicite
+     *
      * @param i : Correspond a l'image explicite qui sera copier dans l'image implicite
      * @author Anthony Carmichael
      */
@@ -217,6 +250,7 @@ public class Image {
 
     /**
      * Permet d'extraire une partie d'image pour en former une nouvelle image
+     *
      * @param l1 : Concerne la ligne dans la matrice du pixel coin haut/gauche de la partie a extraire
      * @param col1 : Concerne la colone dans la matrice du pixel coin haut/gauche de la partie a extraire
      * @param l2 : Concerne la ligne dans la matrice du pixel coin bas/droite de la partie a extraire
@@ -243,6 +277,7 @@ public class Image {
 
     /**
      * Verification si l'image implicite et explicite sont identique
+     *
      * @param image : Correspond a l'image explicite qui sera comparée
      * @author Anthony Carmichael
      */
@@ -294,6 +329,7 @@ public class Image {
 
     /**
      * Appelle la méthode reduire associée a la bonne sous-classe
+     *
      * @author Anthony Carmichael
      */
     public void reduire(){
@@ -306,7 +342,8 @@ public class Image {
     }
 
     /**
-     * Appelle la méthode eclaircir_noicir associée a la bonne sous-classe
+     * Appelle la méthode eclaircir_noicir associée à la bonne sous-classe
+     *
      * @param valeur correspond a une addition ou une soustraction de la couleur
      * @author Anthony Carmichael
      */
@@ -321,6 +358,7 @@ public class Image {
 
     /**
      * Appelle la méthode couleur_preponderante associée a la bonne sous-classe
+     *
      * @author Anthony Carmichael
      */
     public Pixel couleur_preponderante(){

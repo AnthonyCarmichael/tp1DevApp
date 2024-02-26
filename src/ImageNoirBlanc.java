@@ -9,13 +9,11 @@ import java.util.Scanner;
 import static java.lang.Integer.parseInt;
 
 /**
+ * Cette classe implémente une image en noir et blanc
  *
- * @author Anthony Carmichael, Maxime Malette, Richard Dongmo
- * @version 1.0
- *
- * cette classe implémente une image en noir et blanc
+ *  @author Anthony Carmichael, Maxime Malette, Richard Dongmo
+ *  @version 1.0
  */
-
 public class ImageNoirBlanc extends Image{
 
     /**

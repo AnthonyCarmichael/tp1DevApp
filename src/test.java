@@ -8,6 +8,7 @@ public class test {
     public static void main(String[] args){
         // Instanciation des objets
         Traducteur traducteur = new Traducteur();
+
         Image imageCouleur;
         Image imageNoirBlanc;
         Image image3Couleur;
@@ -107,11 +108,19 @@ public class test {
         ///////////////////////////////////////////////////////////////////////////////////
         // TEST RICHARD
         Image image;
-        image = traducteur.lire("image/Sherbrooke_Frontenac_nuit.pgm");
+        image = traducteur.lire("image/test.pgm");
         System.out.println(image);
         if (image instanceof ImageNoirBlanc){
-            //((ImageCouleur) image).eclaircir_noicir(-98);
-            ((ImageNoirBlanc) image).couleur_preponderante();
+            image.set_chemin("image/test_reduire.pgm");
+            ((ImageNoirBlanc) image).reduire();
+            System.out.println(image);
         }
+
+        Image testRotation = image3Couleur;
+        testRotation.set_chemin("image/testRotation.ppm");
+        testRotation.pivoter90();
+        testRotation.pivoter90();
+        testRotation.ecrire();
+
     }
 }

@@ -130,7 +130,7 @@ public class PixelCouleur extends Pixel{
      * @param p3 Un pixel qui va se combiner à notre pixel
      * @return La fonction retourne le nouveau pixel fusionné
      */
-    public Pixel reduire(PixelCouleur p1, PixelCouleur p2, PixelCouleur p3){
+    public PixelCouleur reduire(PixelCouleur p1, PixelCouleur p2, PixelCouleur p3){
         int newRed = (_red + p1.get_red() + p2.get_red() + p3.get_red())/4;
         int newGreen = (_green + p1.get_green() + p2.get_green() + p3.get_green())/4;
         int newBlue = (_blue + p1.get_blue() + p2.get_blue() + p3.get_blue())/4;

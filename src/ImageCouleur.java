@@ -8,7 +8,7 @@ import java.util.Scanner;
  * @author Anthony Carmichael, Maxime Malette, Richard Dongmo
  * @version 1.0
  *
- * Cette classe implémente une image en couleur
+ * cette classe implémente une image en couleur
  */
 public class ImageCouleur extends Image{
 
@@ -50,6 +50,7 @@ public class ImageCouleur extends Image{
     }
 
     /**
+     *
      * @param valeur la valeur passer en paramétre doit être possitve ou
      * négative. Si la valeur est positive, l’image devient plus noire,
      * si la valeur est négative, l’image devient plus claire
@@ -65,6 +66,18 @@ public class ImageCouleur extends Image{
     /*Cette méthode réduit le pixel*/
     public void reduire(){
 
+        set_hauteur((short) (get_hauteur()/2));
+        set_largeur((short) (get_largeur()/2));
+
+        PixelCouleur[][] matriceReduite = new PixelCouleur[get_hauteur()][get_largeur()];
+
+        for (int i = 0; i < get_hauteur(); i++) {
+            for (int j = 0; j < get_largeur(); j++) {
+                matriceReduite[i][j] = ((PixelCouleur) getMatrice()[2*i][2*j]).reduire(((PixelCouleur) getMatrice()[2*i][2*j+1]), ((PixelCouleur) getMatrice()[2*i+1][2*j]), ((PixelCouleur) getMatrice()[2*i+1][2*j+1]));
+            }
+        }
+
+        set_matrice(matriceReduite);
     }
 
     /**
